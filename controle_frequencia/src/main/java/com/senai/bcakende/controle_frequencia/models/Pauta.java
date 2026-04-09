@@ -1,0 +1,63 @@
+package com.senai.bcakende.controle_frequencia.models;
+
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+@Entity
+@Table(name = "pauta")
+public class Pauta {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+   
+   @Column(name = "turma")
+    private String turma;
+    
+    @OneToMany
+    @JoinColumn(name = "id_pauta")
+    private List<usuario> usuario;
+
+    public Pauta() {
+    }
+
+    public Pauta(Integer id, String turma, List<com.senai.bcakende.controle_frequencia.models.usuario> usuario) {
+        this.id = id;
+        this.turma = turma;
+        this.usuario = usuario;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTurma() {
+        return turma;
+    }
+
+    public void setTurma(String turma) {
+        this.turma = turma;
+    }
+
+    public List<usuario> getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(List<usuario> usuario) {
+        this.usuario = usuario;
+    }
+    
+    
+
+}
